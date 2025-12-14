@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Polygon Area Calculator</title>
+  <!-- Leaflet CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Leaflet JS -->
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Turf.js -->
+  <script src="https://cdn.jsdelivr.net/npm/turf/turf.min.js"></script>
+</head>
+<body >
+  <div class="container mx-auto p-4" width : 75%>
+    <h1 class="text-2xl font-bold text-center mb-4">Interactive Polygon Area Calculator</h1>
+
+    <!-- Map Section -->
+    <div id="map" class="h-96 rounded shadow-lg mb-4"></div>
+
+    <!-- Controls Section -->
+    <div class="bg-white p-4 rounded shadow" style="text-align: center;">
+      <h2 class="text-lg font-bold mb-2">Instructions</h2>
+      <p class="text-gray-700">Click on the map to add points. Once done, click "Calculate Area" to join the points and calculate the polygon's area.</p>
+      <button id="calculate-area" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4">Calculate Area</button>
+      <button id="clear-points" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mt-4">Clear Points</button>
+      <p id="details" class="mt-4 text-gray-700">Selected points will appear here.</p>
+      <p id="area" class="mt-4 text-gray-700">Area: Not calculated yet.</p>
+    </div>
+  </div>
+
+  <script>
+    // Initialize the map
+    const map = L.map('map').setView([20, 0], 2);
+
+    const satelliteLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+    }).addTo(map);
+
+    // Layer group to hold points and polygons
+    const pointLayerGroup = L.layerGroup().addTo(map);
+    const polygonLayerGroup = L.layerGroup().addTo(map);
+
+    // Array to hold selected points
+    let points = [];
+
+    // Add point on map click
+    map.on('click', (e) => {
+      const latLng = [e.latlng.lat, e.latlng.lng];
+      points.push(latLng);
+
+      // Add a marker for the point
+      L.marker(latLng).addTo(pointLayerGroup);
+
+      // Update the details section
+      document.getElementById('details').textContent = `Selected Points: ${JSON.stringify(points)}`;
+    });
+
+    // Calculate area when the button is clicked
+    document.getElementById('calculate-area').addEventListener('click', () => {
+      if (points.length < 3) {
+        alert('You need at least 3 points to form a polygon!');
+        return;
+      }
+
+      // Close the polygon by adding the first point to the end
+      const closedPolygon = [...points, points[0]];
+
+      // Draw the polygon on the map
+      polygonLayerGroup.clearLayers();
+      const polygon = L.polygon(closedPolygon, { color: 'blue' }).addTo(polygonLayerGroup);
+
+      // Calculate area using Turf.js
+      const area = turf.area(turf.polygon([closedPolygon]));
+      document.getElementById('area').textContent =` Area: ${area.toFixed(2)} square meters`;
+
+      // Zoom to fit the polygon
+      map.fitBounds(polygon.getBounds());
+    });
+
+    // Clear all points and layers
+    document.getElementById('clear-points').addEventListener('click', () => {
+      points = [];
+      pointLayerGroup.clearLayers();
+      polygonLayerGroup.clearLayers();
+      document.getElementById('details').textContent = 'Selected Points: None';
+      document.getElementById('area').textContent = 'Area: Not calculated yet.';
+    });
+  </script>
+</body>
+</html>

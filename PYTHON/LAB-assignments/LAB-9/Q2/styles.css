@@ -1,0 +1,99 @@
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #232f3e;
+    padding: 15px;
+    color: white;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-box {
+    padding: 8px;
+    width: 300px;
+    border: none;
+    border-radius: 4px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Banner Section */
+.banner {
+    background: url('banner.jpg') no-repeat center center/cover;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.banner-text h2 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Categories Section */
+.categories {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    text-align: center;
+}
+
+.category {
+    width: 30%;
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.category img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Sign-in Section */
+.signin {
+    text-align: center;
+    margin: 20px;
+    padding: 15px;
+    background-color: #ff9900;
+    color: white;
+}
+
+.signin button {
+    background-color: white;
+    color: #ff9900;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.signin button:hover {
+    background-color: #f3f3f3;
+}

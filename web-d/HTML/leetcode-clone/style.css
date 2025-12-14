@@ -1,0 +1,70 @@
+body {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: #1A1A1A;
+  color: #fff;
+  margin: 0;
+  overflow: hidden;
+}
+
+.header{
+    background-color: #282828;
+    height: 50px;
+    width: 100%;
+    padding: 0 1.5rem;
+    display: flex;
+}
+
+.header-logo{
+    width: 2rem;
+    height: 2rem;
+    padding: 0.65rem 0.8rem;
+
+}
+
+.header-content{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.header-content-options{
+    padding: 0 0.75rem;
+    opacity: 0.65;
+}
+
+.header-content-options:hover{
+    opacity: 1;
+}
+
+.header-record{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 0.75rem;
+}
+
+.header-record-icon{
+    opacity: 0.65;
+    margin: 0 0.65rem;
+}
+
+.header-record-icon:hover{
+    opacity: 1;
+}
+
+.header-record-id{
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+}
+
+.premium{
+    font-size: 14px;
+    color:goldenrod;
+    background-color: rgb(73, 59, 9);
+    margin-right: 3rem;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f2f2f2;
+        }
+
+        .navbar {
+            background-color: #232f3e;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+
+        }
+
+        img {
+            height: 50px;
+            width: 80px;
+        }
+
+        .search-bar {
+            flex-grow: 0;
+            margin: 0 20px;
+            width: 850px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .categories {
+            background-color: #33314e;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+        }
+
+        .categories a {
+            text-decoration: none;
+            color: rgb(243, 235, 235);
+            font-weight: bold;
+        }
+
+        .main-section {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            width:25%;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+
+        .boxx {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            height: 150px;
+            border-radius: 20px;
+        }
+
+        .boxx1 {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            height: 225px;
+            border-radius: 20px;
+        }
+
+        .box img {
+            height: 300px;
+            width: 300px;
+        }
+
+        .boxx1 img {
+            height: 195px;
+            width: 240px;
+        }
+
+        .back {
+            background-image: url("https://images-eu.ssl-images-amazon.com/images/G/31/img18/HomeImprovement/harsmisc/2025/March/HMD/Starting_99_HI_3000x1200.CB547857789.jpg");
+            background-position: top;
+            background-size: cover;
+            padding: 90px 30px;
+        }
+
+        .backx {
+            background: linear-gradient(to bottom, #bde0b9, #325d92);
+            padding: 40px;
+            ;
+        }
+
+        .btn {
+            background-color: #81fb30;
+            color: #060202;
+            padding: 10px 10px;
+            text-decoration: none;
+            font-size: 13px;
+            border-radius: 20px;
+            margin-top: 30px;
+            display: inline-block;
+        }
+
+        .flex {
+            display: flex;
+            flex-direction: column;
+            width: 24%;
+            gap: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div><img src="https://www.hatchwise.com/wp-content/uploads/2022/05/amazon-logo-1024x683.png-1.webp" alt="">
+        </div>
+        <div>
+            <pre><b>Deliver to</b></pre>
+            <small>Bhilwara</small>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="nav-links">
+            <a href="#">Account & Lists</a>
+            <a href="#">Orders</a>
+            <a href="#">Cart</a>
+        </div>
+    </header>
+    <nav class="categories">
+        <a href="#">Best Sellers</a>
+        <a href="#">Amazon Basics</a>
+        <a href="#">New Releases</a>
+        <a href="#">Today's Deals</a>
+        <a href="#">Customer Service</a>
+        <a href="#">Books</a>
+        <a href="#">Gift Cards</a>
+        <a href="#">Toys & Games</a>
+        <a href="#">Fashion</a>
+    </nav>
+
+    <section class="back"></section>
+    <section class="main-section backx">
+        <div class="box">
+            Appliances for your home | Up to 55% off
+            <br>
+            <img src="Screenshot 2025-03-19 234242.png" alt="">
+        </div>
+        <div class="box">
+            Revamp your home in style
+            <br>
+            <img src="Screenshot 2025-03-19 234301.png" alt="">
+        </div>
+        <div class="box">
+            Starting ₹149 | Headphones
+            <br>
+            <img src="Screenshot 2025-03-19 234309.png" alt="">
+        </div>
+        <div class="flex">
+            <div class="boxx">
+                <b>Sign in for your best experience</b>
+                <br>
+                <a href="" class="btn">Sign in Securely</a>
+            </div>
+            <div class="boxx1">
+                <img src="Screenshot 2025-03-20 002328.png" alt="">
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
