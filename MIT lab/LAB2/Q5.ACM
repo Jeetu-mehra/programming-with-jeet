@@ -1,0 +1,16 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+MOV A,B
+STA 0008H
+
+
+
+hlt

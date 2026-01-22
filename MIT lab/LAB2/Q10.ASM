@@ -1,0 +1,18 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+MVI A,32H 
+STA 003EH 
+LDA 003EH 
+MOV C,A 
+MOV A,C 
+
+
+hlt

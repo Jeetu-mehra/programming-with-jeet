@@ -1,0 +1,15 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+MVI A,35H 
+LXI B,35AH 
+STAX B 
+
+hlt

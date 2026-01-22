@@ -3194,21 +3194,42 @@
 
 
 
-#include<bits/stdc++.h>
-using namespace std;
-int main(){
-    int T;
-    cin>>T;
-    while(T--){
-        int x,y,a,b;
-        cin>>x>>y>>a>>b;
-        if(x==y && y==a && a==b) cout<<"YES";
-        else cout<<"NO";
-        cout<<endl;        
-    }
-    return 0;
-}
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     int T;
+//     cin>>T;
+//     while(T--){
+//         int x,y,a,b;
+//         cin>>x>>y>>a>>b;
+//         if(x==y && y==a && a==b) cout<<"YES";
+//         else cout<<"NO";
+//         cout<<endl;        
+//     }
+//     return 0;
+// }
 
+
+
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     int T;
+//     cin>>T;
+//     while(T--){
+//         int n;
+//         cin>>n;
+//         while(n!=0){
+//             cout<<n;
+//             n--;
+//             cout<<" ";
+//         }
+//         cout<<endl;
+        
+//     }
+//     return 0;
+// }
 
 
 
