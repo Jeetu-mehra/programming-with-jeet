@@ -3234,6 +3234,65 @@
 
 
 
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     int T;
+//     cin>>T;
+//     while(T--){
+//         int n;
+//         cin>>n;
+//         vector<int> a(n);
+//         for(int i=0;i<n;i++){
+//             cin>>a[i];
+//         }
+//         int mx=-1;
+//         for(int i=0;i<n;i++){
+//             mx=max(mx,a[i]);
+//         }
+//         cout<<mx*n<<endl;
+        
+//     }
+//     return 0;
+// }
+
+
+
+
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     int T;
+//     cin>>T;
+//     while(T--){
+//         int n;
+//         cin>>n;
+//         vector<int> a,b(n);
+//         set<int> s;
+//         for(int i=0;i<n;i++){
+//             cin>>b[i];
+//         }
+//         for(int i=0;i<n;i++){
+//             // cin>>a[i];
+//             s.insert(b[i]);
+//         }
+//         for(auto e : s){
+//             a.push_back(e);
+//         }
+//         sort(a.begin(),a.end());
+//         int ans=1,temp=1;
+//         for(int i=0;i<a.size()-1;i++){
+//             if(a[i]==a[i+1]-1){
+//                 temp++;
+//             }
+//             else temp=1;
+//             ans=max(ans,temp);
+//         }
+//         cout<<ans<<endl;
+//     }
+//     return 0;
+// }
 
 
 
@@ -3242,10 +3301,168 @@
 
 
 
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     int T;
+//     cin>>T;
+//     while(T--){
+//         int n,m,h;
+//         cin>>n>>m>>h;
+//         vector<int> a(n);
+//         for(int i=0;i<n;i++){
+//             cin>>a[i];
+//         }
+//         vector<int> b(a.begin(),a.end());
+//         while(m--){
+//             int u,v;
+//             cin>>u>>v;
+//             a[u-1]+=v;
+//             if(a[u-1]>h) a=b;
+//         }
+//         for(int i=0;i<n;i++){
+//             cout<<a[i]<<" ";
+//         }   
+//         cout<<endl;        
+//     }
+//     return 0;
+// }
+
+
+
+//contest
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     int T;
+//     cin>>T;
+//     while(T--){
+//         int n,s,x;
+//         cin>>n>>s>>x;
+//         vector<int> a(n);
+//         int sum=0;
+//         for(int i=0;i<n;i++){
+//             cin>>a[i];
+//             sum+=a[i];
+//         }
+//         if(s>=sum && (s-sum)%x==0) cout<<"YES";
+//         else cout<<"NO";
+//         cout<<endl;
+//     }
+//     return 0;
+// }
+
+
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     int T;
+//     cin>>T;
+//     while(T--){
+//         int n;
+//         cin>>n;
+//         vector<int> a(n);
+//         for(int i=0;i<n;i++){   
+//             cin>>a[i];
+//         }
+//         int l=0,r=n-1;
+//         int n2=n;
+//         while(l<n){
+//             if(a[l]==n2){
+//                 l++;
+//                 n2--;
+//             }
+//             else break;
+//         }
+//         while(r>=0){
+//             if(a[r]!=n2){
+//                 r--;
+//                 // n2--;
+//             }
+//             else break;
+//         }
+//         reverse(a.begin()+l,a.begin()+r+1);
+//         for(int i=0;i<n;i++){
+//             cout<<a[i]<<" ";
+//         }
+//         cout<<endl;        
+//     }
+//     return 0;
+// }
 
 
 
 
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     int T;
+//     cin>>T;
+//     while(T--){
+//         int n,q;
+//         cin>>n>>q;
+//         vector<int> a(n);
+//         for(int i=0;i<n;i++){   
+//             cin>>a[i];
+//         }
+//         vector<int> b(n);
+//         for(int i=0;i<n;i++){
+//             cin>>b[i];
+//         }
+//         a[n-1]=max(a[n-1],b[n-1]);
+//         for(int i=n-2;i>=0;i--){
+//             a[i]=max(a[i],max(a[i+1],b[i]));
+//         }
+//         int pre=0;
+//         for(int i=0;i<n;i++){
+//             pre+=a[i];
+//             a[i]=pre;            
+//         }
+//         while(q--){
+//             int l,r;
+//             cin>>l>>r;
+//             cout<<a[r-1]-((l-2)>=0?a[l-2]:0)<<endl;
+//         }
+//     }
+//     return 0;
+// }
+
+
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int T;
+    cin>>T;
+    while(T--){
+        int n;
+        cin>>n;
+        vector<int> a(n);   
+        for(int i=0;i<n;i++){   
+            cin>>a[i];
+        }
+        vector<int> b(n);
+        for(int i=0;i<n;i++){
+            cin>>b[i];
+        }
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum+=b[i];
+            b[i]=sum;
+        }
+        int diff=0;
+        for(int i=0;i<n;i++){
+            diff+=a[i]-b[i];
+        }
+        
+    }
+    return 0;
+}
 
 
 
