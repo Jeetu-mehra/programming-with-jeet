@@ -3434,37 +3434,45 @@
 
 
 
-#include<bits/stdc++.h>
-using namespace std;
-int main(){
-    int T;
-    cin>>T;
-    while(T--){
-        int n;
-        cin>>n;
-        vector<int> a(n);   
-        for(int i=0;i<n;i++){   
-            cin>>a[i];
-        }
-        vector<int> b(n);
-        for(int i=0;i<n;i++){
-            cin>>b[i];
-        }
-        int sum=0;
-        for(int i=0;i<n;i++){
-            sum+=b[i];
-            b[i]=sum;
-        }
-        int diff=0;
-        for(int i=0;i<n;i++){
-            diff+=a[i]-b[i];
-        }
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     int T;
+//     cin>>T;
+//     while(T--){
+//         int n;
+//         cin>>n;
+//         vector<int> a(n);   
+//         for(int i=0;i<n;i++){   
+//             cin>>a[i];
+//         }
+//         vector<int> b(n);
+//         for(int i=0;i<n;i++){
+//             cin>>b[i];
+//         }
+//         int sum=0;
+//         for(int i=0;i<n;i++){
+//             sum+=b[i];
+//             b[i]=sum;
+//         }
+//         int diff=0;
+//         for(int i=0;i<n;i++){
+//             diff+=a[i]-b[i];
+//         }
         
-    }
-    return 0;
-}
+//     }
+//     return 0;
+// }
 
 
+// #include<iostream>
+// using namesapce std;
+// int main(){
+//     int w;cin>>w;
+//     if(w%2==0)cout<<"YES"<<endl;
+//     else cout<<"NO"<<endl;
+//     return ;
+// }
 
 
 
