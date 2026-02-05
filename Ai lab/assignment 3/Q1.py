@@ -10,14 +10,25 @@ ms = 10
 st = 1
 
 def act(loc, r):
+    # If current room dirty -> clean it
     if r[loc] == 1:
         return "SUCK"
 
+    # If at B, decide where to go
+    if loc == "B":
+        if r["A"] == 1:
+            return "LEFT"
+        elif r["C"] == 1:
+            return "RIGHT"
+        else:
+            return "NO_OP"
+
+    # If at A, go right
     if loc == "A":
         return "RIGHT"
-    elif loc == "B":
-        return "RIGHT"
-    else:
+
+    # If at C, go left
+    if loc == "C":
         return "LEFT"
 
 
@@ -51,6 +62,10 @@ while st <= ms:
             loc = "B"
         elif loc == "B":
             loc = "C"
+
+    elif a == "NO_OP":
+        print("No operation needed. Stop.\n")
+        break
 
     print("New Loc:", loc)
     print()
