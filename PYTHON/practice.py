@@ -445,101 +445,180 @@
 
 
 
-# using Adjacency matrix
+# # using Adjacency matrix
+# from collections import deque
+
+# # -----------------------------
+# # CITY NAMES
+# # -----------------------------
+# cities = [
+#     "Chicago","Detroit","Cleveland","Buffalo","Syracuse",
+#     "Pittsburgh","Columbus","Indianapolis","New York",
+#     "Philadelphia","Baltimore","Boston","Providence","Portland"
+# ]
+
+# n = len(cities)
+
+# # -----------------------------
+# # ADJACENCY MATRIX
+# # -----------------------------
+# matrix = [[0 for _ in range(n)] for _ in range(n)]
+
+# edges = [
+#     (0,1,283),(0,2,345),(0,7,182),
+#     (1,2,169),(1,3,256),
+#     (2,3,189),(2,5,134),(2,6,144),
+#     (3,4,150),(3,8,312),
+#     (4,8,254),(4,11,312),(4,9,253),
+#     (5,6,185),(5,9,305),
+#     (6,7,176),(6,9,247),
+#     (8,9,97),(8,11,215),(8,12,181),
+#     (9,10,101),
+#     (10,11,161),
+#     (11,12,50),
+#     (12,13,107)
+# ]
+
+# # Build undirected matrix
+# for u, v, w in edges:
+#     matrix[u][v] = w
+#     matrix[v][u] = w
+
+# # -----------------------------
+# # BFS USING MATRIX
+# # -----------------------------
+# def bfs(start, end):
+#     queue = deque()
+#     queue.append((start, [start], 0))
+
+#     print("\nAll BFS paths:\n")
+
+#     while queue:
+#         current, path, distance = queue.popleft()
+
+#         if current == end:
+#             for c in path:
+#                 print(cities[c], end=" -> ")
+#             print("END | Distance:", distance)
+#             continue
+
+#         for neighbour in range(n):
+#             if matrix[current][neighbour] != 0 and neighbour not in path:
+#                 queue.append(
+#                     (neighbour, path + [neighbour],
+#                      distance + matrix[current][neighbour])
+#                 )
+
+# # -----------------------------
+# # DFS USING MATRIX
+# # -----------------------------
+# def dfs(current, end, visited, path, distance):
+#     visited[current] = True
+#     path.append(current)
+
+#     if current == end:
+#         for c in path:
+#             print(cities[c], end=" -> ")
+#         print("END | Distance:", distance)
+#     else:
+#         for neighbour in range(n):
+#             if matrix[current][neighbour] != 0 and not visited[neighbour]:
+#                 dfs(
+#                     neighbour, end, visited, path,
+#                     distance + matrix[current][neighbour]
+#                 )
+
+#     path.pop()
+#     visited[current] = False
+
+# # -----------------------------
+# # MAIN
+# # -----------------------------
+# if __name__ == "__main__":
+#     start_city = 0   # Chicago
+#     end_city = 4     # Syracuse
+
+#     print("DFS Paths:\n")
+#     visited = [False] * n
+#     dfs(start_city, end_city, visited, [], 0)
+
+#     bfs(start_city, end_city)
+
+
+
+
+
+
+
+
 from collections import deque
 
-# -----------------------------
-# CITY NAMES
-# -----------------------------
-cities = [
-    "Chicago","Detroit","Cleveland","Buffalo","Syracuse",
-    "Pittsburgh","Columbus","Indianapolis","New York",
-    "Philadelphia","Baltimore","Boston","Providence","Portland"
-]
+# Graph (Adjacency List)
+graph = {
+    "Rahul": ["Sneha", "Maya", "Neha1", "Neha2", "Arjun1", "Pooja2"],
+    "Sneha": ["Rahul", "Sunil", "Maya"],
+    "Maya": ["Sneha", "Rahul", "Arjun2"],
+    "Sunil": ["Sneha", "Raj", "Akash"],
+    "Raj": ["Sunil", "Priya", "Neha1"],
+    "Priya": ["Raj", "Akash", "Aarav"],
+    "Akash": ["Sunil", "Priya", "Neha1"],
+    "Neha1": ["Rahul", "Raj", "Akash", "Aarav", "Neha2"],
+    "Neha2": ["Rahul", "Neha1", "Aarav", "Arjun1"],
+    "Aarav": ["Priya", "Neha1", "Neha2"],
+    "Arjun1": ["Rahul", "Neha2", "Pooja2"],
+    "Pooja2": ["Rahul", "Arjun1", "Pooja1"],
+    "Pooja1": ["Pooja2", "Arjun2"],
+    "Arjun2": ["Maya", "Pooja1"]
+}
 
-n = len(cities)
+# ---------------- BFS TREE ----------------
+def bfs_tree(start):
+    visited = set()
+    q = deque([start])
 
-# -----------------------------
-# ADJACENCY MATRIX
-# -----------------------------
-matrix = [[0 for _ in range(n)] for _ in range(n)]
+    visited.add(start)
 
-edges = [
-    (0,1,283),(0,2,345),(0,7,182),
-    (1,2,169),(1,3,256),
-    (2,3,189),(2,5,134),(2,6,144),
-    (3,4,150),(3,8,312),
-    (4,8,254),(4,11,312),(4,9,253),
-    (5,6,185),(5,9,305),
-    (6,7,176),(6,9,247),
-    (8,9,97),(8,11,215),(8,12,181),
-    (9,10,101),
-    (10,11,161),
-    (11,12,50),
-    (12,13,107)
-]
+    bfs_edges = []  # store tree edges (parent -> child)
 
-# Build undirected matrix
-for u, v, w in edges:
-    matrix[u][v] = w
-    matrix[v][u] = w
+    while q:
+        node = q.popleft()
 
-# -----------------------------
-# BFS USING MATRIX
-# -----------------------------
-def bfs(start, end):
-    queue = deque()
-    queue.append((start, [start], 0))
+        for neighbor in graph.get(node, []):
+            if neighbor not in visited:
+                visited.add(neighbor)
+                q.append(neighbor)
+                bfs_edges.append((node, neighbor))
 
-    print("\nAll BFS paths:\n")
+    return bfs_edges
 
-    while queue:
-        current, path, distance = queue.popleft()
 
-        if current == end:
-            for c in path:
-                print(cities[c], end=" -> ")
-            print("END | Distance:", distance)
-            continue
+# ---------------- DFS TREE ----------------
+def dfs_tree(start):
+    visited = set()
+    dfs_edges = []
 
-        for neighbour in range(n):
-            if matrix[current][neighbour] != 0 and neighbour not in path:
-                queue.append(
-                    (neighbour, path + [neighbour],
-                     distance + matrix[current][neighbour])
-                )
+    def dfs(node):
+        visited.add(node)
 
-# -----------------------------
-# DFS USING MATRIX
-# -----------------------------
-def dfs(current, end, visited, path, distance):
-    visited[current] = True
-    path.append(current)
+        for neighbor in graph.get(node, []):
+            if neighbor not in visited:
+                dfs_edges.append((node, neighbor))
+                dfs(neighbor)
 
-    if current == end:
-        for c in path:
-            print(cities[c], end=" -> ")
-        print("END | Distance:", distance)
-    else:
-        for neighbour in range(n):
-            if matrix[current][neighbour] != 0 and not visited[neighbour]:
-                dfs(
-                    neighbour, end, visited, path,
-                    distance + matrix[current][neighbour]
-                )
+    dfs(start)
+    return dfs_edges
 
-    path.pop()
-    visited[current] = False
 
-# -----------------------------
-# MAIN
-# -----------------------------
-if __name__ == "__main__":
-    start_city = 0   # Chicago
-    end_city = 4     # Syracuse
+# ---------------- MAIN ----------------
+start_node = "Rahul"
 
-    print("DFS Paths:\n")
-    visited = [False] * n
-    dfs(start_city, end_city, visited, [], 0)
+bfs_result = bfs_tree(start_node)
+dfs_result = dfs_tree(start_node)
 
-    bfs(start_city, end_city)
+print("BFS Tree Edges:")
+for u, v in bfs_result:
+    print(f"{u} -> {v}")
+
+print("\nDFS Tree Edges:")
+for u, v in dfs_result:
+    print(f"{u} -> {v}")
