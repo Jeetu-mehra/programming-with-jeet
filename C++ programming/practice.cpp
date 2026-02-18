@@ -3465,8 +3465,10 @@
 // }
 
 
+
+
 // #include<iostream>
-// using namesapce std;
+// using namespace std;
 // int main(){
 //     int w;cin>>w;
 //     if(w%2==0)cout<<"YES"<<endl;
@@ -3476,6 +3478,72 @@
 
 
 
+
+
+
+
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main() {
+//     int t;
+//     cin>>t;
+//     while(t--){
+//         int n;
+//         cin>>n;
+//         vector<int>v(n);
+//         for(int i=0;i<n;i++){
+//             cin>>v[i];
+//         }
+//         int ans=0;
+//         // sort(v.begin(),v.end());
+//         map<int,int> mp;
+//         for(int i=0;i<n;i++){
+//             mp[v[i]]++;
+//         }
+//         for(auto it:mp){
+//             if(it.second>1)ans++;
+//         }
+//         cout<<ans;
+//         cout<<endl;
+//     }
+//     return 0;
+// }
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int T;
+    cin>>T;
+    while(T--){
+        long long s,n,k;
+        cin>>s>>n>>k;
+        vector<int> v(n);
+        for(int i=0;i<n;i++){
+            cin>>v[i];
+        }
+        sort(v.begin(),v.end());
+        reverse(v.begin(),v.end());
+        int ans=0;
+        for(int i=0;i<n;i++){
+            if(v[i]>=k){
+                ans++;
+            }
+        }
+        for(int i=0;i<n;i++){
+            if(v[i]<k && s>=(k-v[i])){
+                s-=(k-v[i]);
+                ans++;
+            }
+        }
+        cout<<ans<<endl;
+        
+    }
+    return 0;
+}
 
 
 

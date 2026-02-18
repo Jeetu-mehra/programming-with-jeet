@@ -11,7 +11,8 @@ start: nop
 
 LXI H, 2000H
 MVI M, 32H
-INR M
+DCR M
+MOV B, M
 
 
 

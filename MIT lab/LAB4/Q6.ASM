@@ -9,9 +9,10 @@ jmp start
 ;code
 start: nop
 
-LXI H, 2000H
-MVI M, 32H
-INR M
+LXI H, 0032H
+DCX H
+SHLD 005FH
+HLT
 
 
 

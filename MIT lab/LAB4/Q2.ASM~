@@ -8,9 +8,11 @@ jmp start
 
 ;code
 start: nop
+
 LXI H, 2000H
-MVI M, 09H
+MVI M, 32H
 INR M
+
 
 
 hlt
