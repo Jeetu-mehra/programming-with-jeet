@@ -3513,37 +3513,37 @@
 
 
 
-#include<bits/stdc++.h>
-using namespace std;
-int main(){
-    int T;
-    cin>>T;
-    while(T--){
-        long long s,n,k;
-        cin>>s>>n>>k;
-        vector<int> v(n);
-        for(int i=0;i<n;i++){
-            cin>>v[i];
-        }
-        sort(v.begin(),v.end());
-        reverse(v.begin(),v.end());
-        int ans=0;
-        for(int i=0;i<n;i++){
-            if(v[i]>=k){
-                ans++;
-            }
-        }
-        for(int i=0;i<n;i++){
-            if(v[i]<k && s>=(k-v[i])){
-                s-=(k-v[i]);
-                ans++;
-            }
-        }
-        cout<<ans<<endl;
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     int T;
+//     cin>>T;
+//     while(T--){
+//         long long s,n,k;
+//         cin>>s>>n>>k;
+//         vector<int> v(n);
+//         for(int i=0;i<n;i++){
+//             cin>>v[i];
+//         }
+//         sort(v.begin(),v.end());
+//         reverse(v.begin(),v.end());
+//         int ans=0;
+//         for(int i=0;i<n;i++){
+//             if(v[i]>=k){
+//                 ans++;
+//             }
+//         }
+//         for(int i=0;i<n;i++){
+//             if(v[i]<k && s>=(k-v[i])){
+//                 s-=(k-v[i]);
+//                 ans++;
+//             }
+//         }
+//         cout<<ans<<endl;
         
-    }
-    return 0;
-}
+//     }
+//     return 0;
+// }
 
 
 
