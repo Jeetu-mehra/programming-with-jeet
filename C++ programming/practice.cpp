@@ -3548,3 +3548,315 @@
 
 
 
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     int T;
+//     cin>>T;
+//     while(T--){
+//         int n,x;
+//         cin>>n>>x;
+//         vector<int> a(n);
+//         for(int i=0;i<n;i++){
+//             cin>>a[i];
+//         }
+//         vector<int> copy(a.begin(),a.end());
+//         int ans=0;
+//         while(x!=0){
+//             ans++;
+//             for(int i=0;i<n;i++){
+//                 a[i]--;
+//                 if(a[i]==0){
+//                     a[i]=copy[i];
+//                     x--;
+//                 }
+//             }              
+
+//         }
+//         cout<<ans<<endl;
+        
+//     }
+//     return 0;
+// }
+
+
+
+
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// int longestGoodPrefix(vector<int>& arr, int k) {
+//     unordered_map<int,int> total;
+//     for(int x : arr)
+//         total[x]++;
+
+//     unordered_map<int,int> freq;
+//     int maxFreq = 0;
+//     int ans = 0;
+
+//     for(int i = 0; i < arr.size(); i++) {
+//         freq[arr[i]]++;
+//         maxFreq = max(maxFreq, freq[arr[i]]);
+
+//         int minFreq = INT_MAX;
+
+//         for(auto &p : total) {
+//             int value = p.first;
+//             int f = freq[value];   // 0 if not yet appeared
+//             minFreq = min(minFreq, f);
+//         }
+
+//         if(maxFreq - minFreq > k)
+//             break;
+
+//         ans = i + 1;
+//     }
+
+//     return ans;
+// }
+
+// int main() {
+//     vector<int> arr = {1, 2, 2, 1, 3};
+//     int k = 1;
+
+//     cout << longestGoodPrefix(arr, k);
+// }
+
+
+
+
+
+
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// int longestGoodPrefix(vector<int>& arr, int k) {
+//     set<int> values(arr.begin(), arr.end());
+//     unordered_map<int,int> freq;
+//     int ans = 0;
+
+//     for(int i = 0; i < arr.size(); i++) {
+//         freq[arr[i]]++;
+
+//         int minFreq = INT_MAX;
+//         int maxFreq = INT_MIN;
+
+//         for(int val : values) {
+//             int currentFreq = freq[val];
+//             minFreq = min(minFreq, currentFreq);
+//             maxFreq = max(maxFreq, currentFreq);
+//         }
+
+//         if(maxFreq - minFreq > k)
+//             break;
+
+//         ans = i + 1;
+//     }
+
+//     return ans;
+// }
+
+// int main() {
+//     vector<int> arr = {1, 2, 2, 1, 3};
+//     // vector<int> arr = {1, -2, -1, 2};
+//     int k = 1;
+
+//     cout << longestGoodPrefix(arr, k) << endl;
+// }
+
+
+
+
+
+
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// struct Trie {
+//     Trie* left = NULL;   // bit 0
+//     Trie* right = NULL;  // bit 1
+//     int count = 0;
+// };
+
+// class Solution {
+// public:
+    
+//     void insert(Trie* root, int num) {
+//         Trie* node = root;
+//         for(int i = 15; i >= 0; i--) {
+//             int bit = (num >> i) & 1;
+//             if(bit == 0) {
+//                 if(!node->left)
+//                     node->left = new Trie();
+//                 node = node->left;
+//             } else {
+//                 if(!node->right)
+//                     node->right = new Trie();
+//                 node = node->right;
+//             }
+//             node->count++;
+//         }
+//     }
+    
+//     int query(Trie* root, int num, int k) {
+//         Trie* node = root;
+//         int ans = 0;
+        
+//         for(int i = 15; i >= 0; i--) {
+//             if(!node) break;
+            
+//             int bitNum = (num >> i) & 1;
+//             int bitK   = (k >> i) & 1;
+            
+//             if(bitK == 1) {
+//                 if(bitNum == 1) {
+//                     if(node->right)
+//                         ans += node->right->count;
+//                     node = node->left;
+//                 } else {
+//                     if(node->left)
+//                         ans += node->left->count;
+//                     node = node->right;
+//                 }
+//             } else {
+//                 if(bitNum == 1)
+//                     node = node->right;
+//                 else
+//                     node = node->left;
+//             }
+//         }
+//         return ans;
+//     }
+    
+//     long long countSubarrays(vector<int>& arr, int k) {
+//         Trie* root = new Trie();
+//         insert(root, 0);
+        
+//         long long count = 0;
+//         int px = 0;
+        
+//         for(int num : arr) {
+//             px ^= num;
+//             count += query(root, px, k);
+//             insert(root, px);
+//         }
+//         return count;
+//     }
+    
+//     int minimumK(vector<int>& arr, int x) {
+//         int low = 0, high = 20000;
+//         int ans = -1;
+        
+//         while(low <= high) {
+//             int mid = (low + high) / 2;
+            
+//             if(countSubarrays(arr, mid) >= x) {
+//                 ans = mid;
+//                 high = mid - 1;
+//             } else {
+//                 low = mid + 1;
+//             }
+//         }
+//         return ans;
+//     }
+// };
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Trie {
+    Trie* child[2];
+    int count;
+    
+    Trie() {
+        child[0] = child[1] = NULL;
+        count = 0;
+    }
+};
+
+void insert(Trie* root, int num) {
+    Trie* node = root;
+    for(int i = 15; i >= 0; i--) {
+        int bit = (num >> i) & 1;
+        if(!node->child[bit])
+            node->child[bit] = new Trie();
+        node = node->child[bit];
+        node->count++;
+    }
+}
+
+long long query(Trie* root, int num, int k) {
+    Trie* node = root;
+    long long ans = 0;
+    
+    for(int i = 15; i >= 0; i--) {
+        if(!node) break;
+        
+        int bitNum = (num >> i) & 1;
+        int bitK   = (k >> i) & 1;
+        
+        if(bitK == 1) {
+            if(node->child[bitNum])
+                ans += node->child[bitNum]->count;
+            node = node->child[1 - bitNum];
+        } else {
+            node = node->child[bitNum];
+        }
+    }
+    
+    return ans;
+}
+
+long long countSubarrays(vector<int>& arr, int k) {
+    Trie* root = new Trie();
+    insert(root, 0);
+    
+    long long count = 0;
+    int prefixXor = 0;
+    
+    for(int num : arr) {
+        prefixXor ^= num;
+        count += query(root, prefixXor, k + 1);  // IMPORTANT FIX
+        insert(root, prefixXor);
+    }
+    
+    return count;
+}
+
+int minimumK(vector<int>& arr, int x) {
+    int low = 0, high = 20000;
+    int ans = -1;
+    
+    while(low <= high) {
+        int mid = (low + high) / 2;
+        
+        if(countSubarrays(arr, mid) >= x) {
+            ans = mid;
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+    
+    return ans;
+}
+
+int main() {
+    int n, x;
+    cin >> n >> x;
+    
+    vector<int> arr(n);
+    for(int i = 0; i < n; i++)
+        cin >> arr[i];
+    
+    cout << minimumK(arr, x) << endl;
+    
+    return 0;
+}
