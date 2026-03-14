@@ -3768,95 +3768,100 @@
 
 
 
-#include <bits/stdc++.h>
-using namespace std;
+// #include <bits/stdc++.h>
+// using namespace std;
 
-struct Trie {
-    Trie* child[2];
-    int count;
+// struct Trie {
+//     Trie* child[2];
+//     int count;
     
-    Trie() {
-        child[0] = child[1] = NULL;
-        count = 0;
-    }
-};
+//     Trie() {
+//         child[0] = child[1] = NULL;
+//         count = 0;
+//     }
+// };
 
-void insert(Trie* root, int num) {
-    Trie* node = root;
-    for(int i = 15; i >= 0; i--) {
-        int bit = (num >> i) & 1;
-        if(!node->child[bit])
-            node->child[bit] = new Trie();
-        node = node->child[bit];
-        node->count++;
-    }
-}
+// void insert(Trie* root, int num) {
+//     Trie* node = root;
+//     for(int i = 15; i >= 0; i--) {
+//         int bit = (num >> i) & 1;
+//         if(!node->child[bit])
+//             node->child[bit] = new Trie();
+//         node = node->child[bit];
+//         node->count++;
+//     }
+// }
 
-long long query(Trie* root, int num, int k) {
-    Trie* node = root;
-    long long ans = 0;
+// long long query(Trie* root, int num, int k) {
+//     Trie* node = root;
+//     long long ans = 0;
     
-    for(int i = 15; i >= 0; i--) {
-        if(!node) break;
+//     for(int i = 15; i >= 0; i--) {
+//         if(!node) break;
         
-        int bitNum = (num >> i) & 1;
-        int bitK   = (k >> i) & 1;
+//         int bitNum = (num >> i) & 1;
+//         int bitK   = (k >> i) & 1;
         
-        if(bitK == 1) {
-            if(node->child[bitNum])
-                ans += node->child[bitNum]->count;
-            node = node->child[1 - bitNum];
-        } else {
-            node = node->child[bitNum];
-        }
-    }
+//         if(bitK == 1) {
+//             if(node->child[bitNum])
+//                 ans += node->child[bitNum]->count;
+//             node = node->child[1 - bitNum];
+//         } else {
+//             node = node->child[bitNum];
+//         }
+//     }
     
-    return ans;
-}
+//     return ans;
+// }
 
-long long countSubarrays(vector<int>& arr, int k) {
-    Trie* root = new Trie();
-    insert(root, 0);
+// long long countSubarrays(vector<int>& arr, int k) {
+//     Trie* root = new Trie();
+//     insert(root, 0);
     
-    long long count = 0;
-    int prefixXor = 0;
+//     long long count = 0;
+//     int prefixXor = 0;
     
-    for(int num : arr) {
-        prefixXor ^= num;
-        count += query(root, prefixXor, k + 1);  // IMPORTANT FIX
-        insert(root, prefixXor);
-    }
+//     for(int num : arr) {
+//         prefixXor ^= num;
+//         count += query(root, prefixXor, k + 1);  // IMPORTANT FIX
+//         insert(root, prefixXor);
+//     }
     
-    return count;
-}
+//     return count;
+// }
 
-int minimumK(vector<int>& arr, int x) {
-    int low = 0, high = 20000;
-    int ans = -1;
+// int minimumK(vector<int>& arr, int x) {
+//     int low = 0, high = 20000;
+//     int ans = -1;
     
-    while(low <= high) {
-        int mid = (low + high) / 2;
+//     while(low <= high) {
+//         int mid = (low + high) / 2;
         
-        if(countSubarrays(arr, mid) >= x) {
-            ans = mid;
-            high = mid - 1;
-        } else {
-            low = mid + 1;
-        }
-    }
+//         if(countSubarrays(arr, mid) >= x) {
+//             ans = mid;
+//             high = mid - 1;
+//         } else {
+//             low = mid + 1;
+//         }
+//     }
     
-    return ans;
-}
+//     return ans;
+// }
 
-int main() {
-    int n, x;
-    cin >> n >> x;
+// int main() {
+//     int n, x;
+//     cin >> n >> x;
     
-    vector<int> arr(n);
-    for(int i = 0; i < n; i++)
-        cin >> arr[i];
+//     vector<int> arr(n);
+//     for(int i = 0; i < n; i++)
+//         cin >> arr[i];
     
-    cout << minimumK(arr, x) << endl;
+//     cout << minimumK(arr, x) << endl;
     
-    return 0;
-}
+//     return 0;
+// }
+
+
+
+
+
