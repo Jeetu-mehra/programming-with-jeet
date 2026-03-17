@@ -1,0 +1,57 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+; -------------------------------
+; Store data at 2050H
+; -------------------------------
+
+LXI H, 2050H
+
+MVI M, 0F2H
+INX H
+
+MVI M, 08H
+INX H
+
+MVI M, 00H
+INX H
+
+MVI M, 40H
+INX H
+
+MVI M, 01H
+INX H
+
+MVI M, 00H
+
+
+; -------------------------------
+; Remove blanks (00 values)
+; -------------------------------
+
+LXI H, 2050H     ; HL → source
+LXI D, 2050H     ; DE → destination (same place)
+MVI C, 06H       ; Counter = 6
+
+LOOP: MOV A, M   ; Load data
+
+      CPI 00H    ; Check if zero
+      JZ SKIP    ; If zero → skip
+
+      STAX D     ; Store valid data
+      INX D      ; Move destination
+
+SKIP: INX H      ; Move source
+      DCR C
+      JNZ LOOP
+
+HLT
+
+hlt

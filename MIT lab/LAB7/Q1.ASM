@@ -1,0 +1,51 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+; -------------------------------
+; Store data at 2055H – 2059H
+; -------------------------------
+
+LXI H, 2055H
+
+MVI M, 22H
+INX H
+
+MVI M, 0A5H
+INX H
+
+MVI M, 01H
+INX H
+
+MVI M, 02H
+INX H
+
+MVI M, 03H
+
+
+; -------------------------------
+; Reverse transfer to 2080H–2084H
+; -------------------------------
+
+LXI H, 2059H
+LXI D, 2080H
+MVI C, 05H
+
+LOOP: MOV A, M
+      STAX D
+
+      DCX H
+      INX D
+
+      DCR C
+      JNZ LOOP
+
+HLT
+
+hlt
