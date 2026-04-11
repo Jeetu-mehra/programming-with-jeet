@@ -79,34 +79,6 @@
 
 
 // 2195C Dice Roll Sequence
-// #include<bits/stdc++.h>
-// using namespace std;
-// int main(){
-//     int T;
-//     cin>>T;
-//     while(T--){
-//         int n;
-//         cin>>n;
-//         vector<int>a(n);
-//         for(int i=0;i<n;i++) cin>>a[i];
-//         int ans=0;
-//         for(int i=0;i<n-1;i++){
-//             if(a[i]+a[i+1]==7) ans++;
-//             if(a[i]==a[i+1]) {
-//                 ans++;
-//                 i++;
-//             }
-//         }
-//         cout<<ans<<endl;
-//     }
-//     return 0;
-// }
-
-
-
-
-
-// 2195D Absolute Cinema
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
@@ -115,10 +87,21 @@ int main(){
     while(T--){
         int n;
         cin>>n;
-        vector<int>f(n);
-        for(int i=0;i<n;i++) cin>>f[i];
-        
-        
+        vector<int>a(n);
+        for(int i=0;i<n;i++) cin>>a[i];
+        int ans=0;
+        for(int i=0;i<n-1;i++){
+            if(a[i]+a[i+1]==7 || a[i]==a[i+1]) {
+                ans++;
+                i++;
+            }
+        }
+        cout<<ans<<endl;
     }
     return 0;
 }
+
+
+
+
+
