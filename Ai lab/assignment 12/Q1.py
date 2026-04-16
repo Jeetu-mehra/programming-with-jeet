@@ -100,7 +100,7 @@ result = ac3(domains, graph)
 
 print("\nAfter Assignment:")
 print_domains(domains)
-
+    
 if result:
     print("✅ No failure (arc-consistent)")
 else:
