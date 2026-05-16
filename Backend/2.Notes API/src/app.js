@@ -22,6 +22,27 @@ app.get('/notes', (req, res) => {
     }); // Send the array of notes as a JSON response
 })
 
+app.delete('/notes/:index', (req, res) => {
+    const index = parseInt(req.params.index);
+
+    delete notes[index]; // Remove the note at the specified index
+    res.status(200).json({
+        message: 'Note deleted successfully'
+    }); // Send a response back to the client
+
+})
+
+
+app.patch('/notes/:index', (req, res) => {
+    const index = parseInt(req.params.index);
+    const description = req.body.description;
+
+    notes[index].description = description; // Update the description of the note at the specified index
+    res.status(200).json({
+        message: 'Note updated successfully'
+    }); // Send a response back to the client
+})
+
 
 
 module.exports = app;
