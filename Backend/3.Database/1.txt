@@ -1,0 +1,12 @@
+operations in database
+
+CRUD
+
+c=> create
+R=> read
+U=> update
+D=> delete
+
+EvnVeq5GIYagSOD5
+
+mongodb+srv://yt:EvnVeq5GIYagSOD5@cluster0.3qdoeus.mongodb.net/
